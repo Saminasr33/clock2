@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <style>
+        #container {
+            position: relative;
+            margin: 100px auto;
+            height: 20vw;
+            width: 20vw;
+            border-radius: 100%;
+            background: url(clock.png) no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        #hour,
+        #minute,
+        #second {
+            position: absolute;
+            background: black;
+            border-radius: 10px;
+            transform-origin: bottom center;
+        }
+
+        #hour {
+            width: 1.5%;
+            height: 20%;
+            top: 29%;
+            left: 48.9%;
+        }
+
+        #minute {
+            width: 1.5%;
+            height: 25%;
+            top: 24%;
+            left: 48.9%;
+        }
+
+        #second {
+            width: 1%;
+            height: 30%;
+            top: 19%;
+            left: 49.25%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <script>
+        function updateclock() {
+            const now = new Date();
+            const hours = now.getHours() % 12;
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const hourHandAngel = (hours * 30) + (minutes * 0.5);
+            const minuteHandAngel = minutes * 6;
+            const secondHandAngel = seconds * 6;
+
+            document.getElementById('hour').style.transform = `rotate(${hourHandAngel}deg)`;
+            document.getElementById('minute').style.transform = `rotate(${minuteHandAngel}deg)`;
+            document.getElementById('second').style.transform = `rotate(${secondHandAngel}deg)`;
+
+        };
+        setInterval(updateclock, 1000);
+    </script>
+</body>
+
+</html>
